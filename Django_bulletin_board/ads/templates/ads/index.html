@@ -1,0 +1,18 @@
+
+{% extends "ads/base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'ads/styles.css' %}">
+<h2>Список объявлений</h2>
+<ul>
+    {% for ad in ads %}
+    <li>
+        <h3>{{ ad.title }} ({{ ad.price }} руб.)</h3>
+        <p>{{ ad.description }}</p>
+        <a href="{% url 'delete' ad.id %}">Удалить</a>
+    </li>
+    {% empty %}
+    <p>Объявлений пока нет.</p>
+    {% endfor %}
+</ul>
+{% endblock %}
