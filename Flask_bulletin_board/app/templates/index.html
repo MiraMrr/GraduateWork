@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Список объявлений</h2>
+<ul>
+    {% for ad in ads %}
+    <li>
+        <h3>{{ ad.title }} ({{ ad.price }} руб.)</h3>
+        <p>{{ ad.description }}</p>
+        <a href="{{ url_for('delete', ad_id=ad.id) }}">Удалить</a>
+    </li>
+    {% else %}
+    <p>Объявлений пока нет.</p>
+    {% endfor %}
+</ul>
+{% endblock %}
